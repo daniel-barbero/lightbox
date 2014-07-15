@@ -1,0 +1,228 @@
+*{margin:0;padding:0;}
+
+html,body{
+	width:100%; height: 100%; overflow: hidden;
+}
+
+body{
+	background: center no-repeat fixed url("img/fondo_lightbox.jpg");
+	background-size: cover;
+	font-family: "Palatino";
+}
+
+header, footer{
+	width:100%; height: 20px;
+	position: absolute;
+	z-index: 10;
+	background-color: #432109;
+}
+
+header p{
+	color:#fff;
+	font-size: 0.8em;
+	text-align: right;
+	margin: 3px 20px 0 0;
+}
+
+footer{
+	bottom:0px;
+}
+
+div#conteiner{
+	width:1100px; height: 440px;
+	position: relative;
+	top:50px; right:-280px;
+	background-color: rgba(112,36,4,0.60);
+
+} 
+
+ul{list-style-type: none;}
+a{text-decoration: none;}
+
+/*   Galeria imagenes pequeñas  */
+
+div.fila, ul {height: 215px;}
+
+li {
+	position: relative;
+	width: 186px; height: 186px;
+	display:inline-block;
+	margin: 20px;
+}
+
+li > a {
+	position: absolute;
+	display: block;
+	width:170px; height:170px;
+	border:6px solid #b24608;
+	box-shadow: 1px 2px 6px rgb(0, 0, 0);
+	border-radius: 3px;
+	overflow: hidden;
+}
+li a.border1{
+	border:6px solid #d2ab60;}
+
+li > a.img-galeria img {
+	position: absolute;
+	display: block;
+}
+
+li> a.img-galeria span{
+	position: absolute;
+	width: 170px;
+	height: 170px;
+	text-align: center;
+	line-height: 270px;
+	color: rgba(119,74,0,0.8);
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+	font-size: 24px;
+	font-family: "Georgia";
+	opacity: 0;
+	background: rgb(216,165,82);	
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(216,165,82,0.26) 0%,rgba(216,165,82,1) 100%);
+	-webkit-transition: opacity 0.3s linear;
+}
+
+li >a.img-galeria:hover span{
+	opacity: 1;
+}
+
+/*   Efecto lightbox cuando pulsamos sobre la imagen  */
+
+div.img-overlay{
+	width: 0px; height: 0px;
+	position: fixed;
+	overflow: hidden;
+	top: 0px;left: 0px;
+	padding: 0px;
+	z-index: 99;
+	text-align: center;
+	background: rgb(150, 99, 8);
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0.56) 0%,rgba(150, 99, 8, 1) 100%);
+}
+
+div.img-overlay:target {
+	width: auto;
+	height: auto;
+	bottom: 0px; right: 0px;
+	padding: 80px 100px 120px 100px;
+}
+
+.img-overlay img{
+	max-height: 100%;
+	position: relative;
+	opacity: 0;
+	border:2px solid #b24608;
+	box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+}
+
+.img-overlay a.img-close{
+	background: rgba( 88, 34, 3, 0.8);
+	color: rgb(245, 217, 167);
+	position: absolute;
+	top: 43px;
+	left: 50%;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 29px;
+	text-align: center;
+	width: 70px;
+	height: 30px;
+	margin-left: -25px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+	opacity: 1;
+}
+
+.img-overlay:target img{
+	opacity: 1;
+	-webkit-transition: all 2s linear;
+}
+
+.img-overlay > div{
+	position: relative;
+	color: rgba(94, 37, 0, 0.88);
+	width: 550px;
+	height: 80px;
+	margin: 40px auto 0px auto;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.45);
+	opacity:1;
+}
+
+.img-overlay:target a.img-close,
+.img-overlay:target > div{
+	-webkit-animation:retraso 3s 1;
+}
+
+@-webkit-keyframes retraso{
+	0%{opacity:0;}
+	80%{opacity:0;}
+	100%{opacity: 1;}
+}
+
+/*  Cuadro de texto */
+.img-overlay div h3,
+.img-overlay div p{
+	padding: 0px 20px;
+	width: 200px;
+	height: 60px;
+}
+.img-overlay div h3{
+	font-size: 36px;
+	float: left;
+	text-align: right;
+	border-right: 1px solid rgba(27,54,81,0.4);
+}
+.img-overlay div h3 span,
+.img-overlay div p{
+	font-size: 16px;
+	font-style: italic;
+}
+.img-overlay div h3 span{
+	display: block;
+	line-height: 6px;
+}
+.img-overlay div p{
+	font-size: 14px;
+	text-align: left;
+	line-height: 55px;
+	float: left;
+	width: 260px;
+}
+
+/* Iconos adelante-atras*/
+
+.img-prev, .img-next{
+	text-indent: -9000px;
+	position: absolute;
+	top: -32px;
+	width: 24px;
+	height: 25px;
+	left: 50%;
+	opacity: 0.8;
+}
+
+.img-prev:hover, .img-next:hover{
+	opacity: 1;
+}
+.img-prev{
+	margin-left: -30px;
+	background: transparent url("img/arrows.png") no-repeat top left;
+}
+.img-next{
+	margin-left: 6px;
+	background: transparent url("img/arrows.png") no-repeat top right;
+}
+
+/*  Nombre     */
+h1{
+	position: relative;
+	left:140px;
+	font-family: 'Book Antiqua';
+	font-size: 3em;
+	color:#ffbb51;
+	opacity: 0.6;
+}
+h1 span{
+	font-size: 2.2em;
+	opacity: 0.6;
+}
